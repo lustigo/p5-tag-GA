@@ -1,19 +1,21 @@
-var Player = function(i,isAttacker) {
+var Player = function(isAttacker) {
   this.acc = createVector(0, 0);
   this.lifespan = 1;
   this.catched = 1;
   this.isAlive = true;
   this.fitness = null; //normalized Fitness
-  this.i = i;
+  //this.i = i;
 
   this.dna = new DNA();
   //Player gets his starting Position
-  if(isAttacker){
+  if (isAttacker) {
     this.vel = createVector(0, 0.1);
-    this.startPos = createVector((i+1)*(w/(teamsize+1)),1/4*h);
-  }else{
-      this.vel = createVector(0, -0.1);
-      this.startPos = createVector((i+1)*(w/(teamsize+1)),3/4*h);
+    this.startPos = createVector(w / 2, 1 / 4 * h);
+    //this.startPos = createVector((i+1)*(w/(teamsize+1)),1/4*h);
+  } else {
+    this.vel = createVector(0, -0.1);
+    this.startPos = createVector(w / 2, 3 / 4 * h)
+    //  this.startPos = createVector((i+1)*(w/(teamsize+1)),3/4*h);
   }
 
   this.pos = this.startPos.copy();
@@ -27,7 +29,7 @@ var Player = function(i,isAttacker) {
 
   this.update = function(counter) {
     if (this.isAlive) {
-      this.acc.add(this.dna.genes[counter+1]);
+      this.acc.add(this.dna.genes[counter + 1]);
       this.vel.add(this.acc);
       this.vel.limit(maxSpeed);
       this.pos.add(this.vel);
@@ -62,7 +64,7 @@ var Player = function(i,isAttacker) {
     }
   }
 
-  this.reset = function(){
+  this.reset = function() {
     this.pos = this.startPos.copy();
     this.vel.setMag(0);
     this.acc.setMag(0);
