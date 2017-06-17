@@ -10,13 +10,22 @@ var DNA = function() {
     var newDNA = new DNA();
 
     //roll a coin for midpoint
-    var midpoint = Math.floor(random(lifespan));
+    /**var midpoint = Math.floor(random(lifespan));
     for (var i = 0; i <= lifespan; i++) {
       if (i < midpoint) {
         newDNA.genes[i] = this.genes[i];
       } else {
         newDNA.genes[i] = partnerDNA.genes[i];
       }
+    }*/
+    //roll a coin for every Gene
+    for(var i=0;i<=lifespan;i++){
+    	var coin=random();
+	if(random<0.5){
+		newDNA.genes[i]=this.genes[i];
+	}else{
+		newDNA.genes[i]=partnerDNA.genes[i];
+	}
     }
 
 

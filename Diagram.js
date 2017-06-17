@@ -6,10 +6,8 @@ var Diagram = function() {
       datasets: [{
         label: "Avg. Lifetime Opponents",
         showLine: true,
-        data: [0]
       }],
       pointstyle: "circle",
-      labels: ["0"]
     },
     options: {
       scales: {
